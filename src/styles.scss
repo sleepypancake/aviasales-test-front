@@ -1,0 +1,27 @@
+// *** СБРОС СТИЛЕЙ ***
+@import "~reset-css";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 10px;
+	scroll-behavior: smooth;
+	background-color: #000B23;
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	font-size: 1.6rem;
+	font-weight: 300;
+    font-style: normal;
+}
+
+img {
+	vertical-align: middle;
+}
+
+

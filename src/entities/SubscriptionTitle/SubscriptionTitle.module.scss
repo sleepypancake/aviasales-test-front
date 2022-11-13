@@ -1,0 +1,20 @@
+.subscriptionTitle {
+    $self: &;
+    margin-bottom: 48px;
+
+    &__logo {
+        margin-bottom: 93px;
+    }
+
+    &__heading {
+        margin-bottom: 28px;
+    }
+
+    &__description {
+        font-size: 2rem;
+        line-height: 1.5;
+        font-weight: 700;
+        color: #ffffff;
+        max-width: 444px;
+    }
+}

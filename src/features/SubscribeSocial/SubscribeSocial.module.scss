@@ -1,0 +1,39 @@
+.subscribeSocial {
+    $self: &;
+
+    &__networks {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 28px;
+    }
+
+    &__network {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-fb {
+            background: linear-gradient(142.25deg, #70ADFF 20.57%, #1977F3 48.47%, #064BA6 78.79%);
+            box-shadow: -10px 0px 20px rgba(0, 58, 218, 0.35), 0px 4px 5px rgba(0, 12, 35, 0.5);
+        }
+
+        &-vk {
+            background: linear-gradient(142.25deg, #60AAFF 20.57%, #2787F5 50.89%, #005CC6 78.79%);
+            box-shadow: -8px -5px 20px rgba(0, 119, 255, 0.46), 0px 4px 5px rgba(0, 12, 35, 0.5);
+        }
+
+        &-twi {
+            background: linear-gradient(141.2deg, #73CAFF 20.61%, #1DA1F2 50.17%, #007CC8 82.31%);
+            box-shadow: -8px 3px 20px rgba(0, 158, 255, 0.4), 0px 4px 5px rgba(0, 12, 35, 0.5);
+        }
+
+        &-inst {
+            background: linear-gradient(142.25deg, #D82D7E 20.57%, #DF406C 48.47%, #FA8F21 78.79%);
+            box-shadow: -10px 0px 20px rgba(255, 0, 108, 0.33), 0px 4px 5px rgba(0, 12, 35, 0.5);
+        }
+    }
+}

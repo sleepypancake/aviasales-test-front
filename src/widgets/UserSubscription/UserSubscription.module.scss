@@ -1,0 +1,130 @@
+.subscription {
+    $self: &;
+    width: 100vw;
+    height: 100vh;
+    overflow: visible;
+    margin: 0 auto;
+
+    &__wrapper {
+        padding: 9vh 153px 17vh 223px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 164px;
+    }
+
+    &__content {
+        flex: 1 0 586px;
+        z-index: 2;
+        height: 100%;
+    }
+
+    &__logo {
+        flex: 1 0 314px;
+        height: 100%;
+        min-height: 537px;
+        background-image: url('~/public/static/Saly-43.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 2;
+    }
+
+    &__steps {
+        display: flex;
+        gap: 24px;
+    }
+}
+
+.starsAndClouds {
+    position: fixed;
+    bottom: 17.3vh;
+    right: 0;
+
+    &_clouds {
+        filter: blur(150px);
+    }
+
+    &_stars {
+        overflow: visible;
+
+        circle {
+
+            &:nth-child(even) {
+                animation: rotate-1 5s linear 0s infinite;
+            }
+            &:nth-child(odd) {
+                animation: rotate-2 7s linear 1s infinite;
+            }
+            &:nth-child(4), &:nth-child(8), &:nth-child(11) {
+                animation: rotate-3 10s linear 1s infinite;
+            }
+
+        }
+    }
+
+    &_darkCloud {
+        left: -14.7vw;
+        bottom: -15.2vh;
+        width: 68.3vw;
+        height: 67.4vh;
+        background: #000916;
+        filter: blur(200px);
+    }
+
+    &_lightCloud {
+        width: 64.3vw;
+        height: 63.6vh;
+        top: -26.2vh;
+        left: -10.7vw;
+        background: rgba(0, 99, 249, 0.19);
+        filter: blur(200px);
+    }
+
+    &_pirpleCloud {
+        width: 49.1vw;
+        height: 49.1vh;
+        top: 25.6vh;
+        right: -4.1vw;
+        background: rgba(189, 0, 255, 0.6);
+        filter: blur(200px);
+    }
+}
+
+@keyframes rotate-1 {
+    0% {
+      transform: translate3d(0, 0, 0) rotate3d(-100,-3, -5 ,-20deg);
+    }
+    50% {
+      transform: rotate3d(-100,-3, -5 ,-13deg) translate3d(10px, 0, 10px);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0) rotate3d(-100,-3, -5 ,-20deg);
+    }
+  }
+
+@keyframes rotate-2 {
+0% {
+    transform: translate3d(0, 0, 0) rotate3d(-100,-3, -5 ,-20deg);
+}
+50% {
+    transform: rotate3d(-100,-3, -5 ,-10deg) translate3d(0, 15px, 10px);
+}
+
+100% {
+    transform: translate3d(0, 0, 0) rotate3d(-100,-3, -5 ,-20deg);
+}
+}
+
+@keyframes rotate-3 {
+    0% {
+        transform: translate3d(0, 0, 0) rotate3d(-100,-3, -5 ,-20deg);
+    }
+    50% {
+        transform: rotate3d(-100, -3, -5, 20deg) translate3d(10px, 0, 5px);
+    }
+    
+    100% {
+        transform: translate3d(0, 0, 0) rotate3d(-100,-3, -5 ,-20deg);
+    }
+    }

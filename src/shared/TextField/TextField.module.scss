@@ -1,0 +1,74 @@
+.textField {
+    $self: &;
+    margin-bottom: 10px;
+   
+
+    &__wrapper {
+        background: #051237;
+        backdrop-filter: blur(20px);
+        
+        border-radius: 6px;
+        position: relative;
+    
+        width: 100%;
+        height: 50px;
+
+
+     
+        &:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            
+            border-radius: 6px;
+            padding: 1px; 
+            background: linear-gradient(95.89deg, rgba(98, 255, 130, 0.988235) 11.34%, #29BA47 93.32%);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+        }
+    }
+
+    &__input {
+        width: 100%;
+		height: 100%;
+        background: transparent;
+        border: none;
+        padding: 16px 0 16px 13px;
+        font-size: 1.4rem;
+        line-height: 1.3;
+        letter-spacing: 0.025em;
+        border: none;
+
+        color: #FFFFFF;
+        outline: none;
+        position: absolute;
+        inset: 0;
+
+        &::placeholder {
+            color: #FFFFFF;
+        }
+    }
+
+    &__msg {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+
+
+    &_error {
+        #{$self}__wrapper {
+            &:before {
+                background: linear-gradient(95.89deg, rgba(255, 30, 30, 0.988235) 11.34%, #C7971C 93.32%);
+
+            }
+        }
+
+        #{$self}__msg {
+            color: #FC1E1F;
+        }
+    }
+}

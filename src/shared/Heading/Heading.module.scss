@@ -1,0 +1,17 @@
+.heading {
+    display: block;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-bottom: 17px;
+
+    &_gradient {
+        background: conic-gradient(from 160.09deg at 44.16% 37.5%, rgb(43, 101, 251) 0deg, rgb(40, 216, 255) 148.13deg, rgb(133, 255, 182) 238.12deg, rgb(23, 194, 19) 360deg) ;
+         -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+    }
+}
