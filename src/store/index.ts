@@ -3,8 +3,10 @@ import { TypedUseSelectorHook } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { subscriptionApi } from './subscription/subscriptionApi';
+import subscriptionReducer from './subscription/subscriptionSlice';
 
 const rootReducer = combineReducers({
+	subscription: subscriptionReducer,
     [subscriptionApi.reducerPath]: subscriptionApi.reducer,
 })
 

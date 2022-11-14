@@ -2,6 +2,13 @@ import React, { useState } from 'react'
 import styles from './SubscriptionForm.module.scss'
 import cn from 'classnames'
 import { SubscribeEmail, SubscribeSocial } from '../../features'
+import { useAppSelector } from '../../store'
+import { 
+    selectCurrentAvailableEmail, 
+    selectCurrentSuccessEmail, 
+    selectCurrentSuccessSocial, 
+    selectCurrentAvailableSocial 
+} from '../../store/subscription/subscriptionSlice'
 
 interface SubscriptionFormProps {
     opt?: {
@@ -12,15 +19,19 @@ interface SubscriptionFormProps {
 }
 
 export const SubscriptionForm = ({opt}: SubscriptionFormProps) => {
-    const [ success, setSuccess ] = useState(false)
+    const successEmail = useAppSelector(selectCurrentSuccessEmail);
+    const successSocial = useAppSelector(selectCurrentSuccessSocial);
+    const availableEmail = useAppSelector(selectCurrentAvailableEmail);
+    const availableSocial = useAppSelector(selectCurrentAvailableSocial);
+    
     return (
         <div className={cn(
             styles.subscriptionForm, 
-            success && styles.subscriptionForm_success,
-            opt?.available && styles.subscriptionForm_available,
+            ((successEmail && opt?.emailSubscribe)  ||  (successSocial && opt?.socialSubscribe)) && styles.subscriptionForm_success,
+            ((availableEmail && opt?.emailSubscribe)  ||  (availableSocial && opt?.socialSubscribe)) && styles.subscriptionForm_available,
             )}>
-            {opt?.emailSubscribe && <SubscribeEmail data={{ setSuccess }} opt={{ success }}/>}
-            {opt?.socialSubscribe && <SubscribeSocial data={{ setSuccess }} opt={{ success }}/>}
+            {opt?.emailSubscribe && <SubscribeEmail opt={{ success: successEmail }}/>}
+            {opt?.socialSubscribe && <SubscribeSocial opt={{ success: successSocial }}/>}
         </div>
     )
 }

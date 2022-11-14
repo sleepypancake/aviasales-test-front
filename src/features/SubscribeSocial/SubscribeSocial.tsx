@@ -1,20 +1,34 @@
-import React from 'react'
+import React, { MouseEvent, useState } from 'react'
 import { Button, UserStep } from '../../shared'
 import { Facebook, Vk, Twitter, Inst } from './icons/icons'
 import styles from './SubscribeSocial.module.scss'
 import cn from 'classnames'
+import { useAppDispatch } from '../../store';
+import { setSocialSuccess } from '../../store/subscription/subscriptionSlice';
 
 interface SubscribeSocialProps {
-    data: {
-        setSuccess: React.Dispatch<React.SetStateAction<boolean>>
-    }
-
     opt: {
         success: boolean
     }
 }
 
-export const SubscribeSocial = ({data, opt}: SubscribeSocialProps) => {
+export const SubscribeSocial = ({ opt}: SubscribeSocialProps) => {
+    const [ socialClicked, setSocialClicked ] = useState(false)
+    const [ errorMsg, setErrorMsg ] = useState('')
+	const dispatch = useAppDispatch();
+
+    const btnSubmitHandler = (e: MouseEvent<HTMLButtonElement>) => {
+        if (socialClicked) {
+            dispatch(setSocialSuccess())
+        } else {
+            setErrorMsg('Надо все же поделиться')
+        }
+    }
+
+    const onLinkClicked = () => {
+        setSocialClicked(true)
+        setErrorMsg('')
+    }
     return (
         <div className={styles.subscribeSocial}>
             <UserStep 
@@ -25,20 +39,38 @@ export const SubscribeSocial = ({data, opt}: SubscribeSocialProps) => {
                 opt={{ success: opt.success }}
             />
             <div className={styles.subscribeSocial__networks}>
-                <div  className={cn(styles.subscribeSocial__network, styles['subscribeSocial__network-fb'])}>
-                    <Facebook/>
-                </div>
-                <div  className={cn(styles.subscribeSocial__network, styles['subscribeSocial__network-vk'])}>
-                    <Vk/>
-                </div>
-                <div  className={cn(styles.subscribeSocial__network, styles['subscribeSocial__network-twi'])}>
-                    <Twitter/>
-                </div>
-                <div  className={cn(styles.subscribeSocial__network, styles['subscribeSocial__network-inst'])}>
-                    <Inst/>
-                </div>
+                <a  
+                    target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https://i.avs.io/kh836o"
+                    onClick={onLinkClicked}
+                    className={cn(styles.subscribeSocial__network, styles['subscribeSocial__network-fb'])}>
+                        <Facebook/>
+                </a>
+                <a  
+                    target="_blank"
+                    href="https://vk.com/share.php?url=https://i.avs.io/z1v1vg"
+                    onClick={onLinkClicked}
+                    className={cn(styles.subscribeSocial__network, styles['subscribeSocial__network-vk'])}>
+                        <Vk/>
+                </a>
+                <a  
+                    target="_blank"
+                    href="https://twitter.com/share?text=В аэропорт с inDriver!&url=https://i.avs.io/sr0ucx"
+                    onClick={onLinkClicked}
+                    className={cn(styles.subscribeSocial__network, styles['subscribeSocial__network-twi'])}>
+                        <Twitter/>
+                </a>
+                <a  
+                    target="_blank"
+                    href="https://www.instagram.com/p/Ck1O9qRDAdU/"
+                    onClick={onLinkClicked}
+                    className={cn(styles.subscribeSocial__network, styles['subscribeSocial__network-inst'])}>
+                        <Inst/>
+                </a>
+
+                {!!errorMsg && <span className={styles.subscribeSocial__msg}>{errorMsg}</span>}
             </div>
-            <Button>Я поделился</Button>
+            <Button onClick={btnSubmitHandler}>Я поделился</Button>
         </div>
     )
 }

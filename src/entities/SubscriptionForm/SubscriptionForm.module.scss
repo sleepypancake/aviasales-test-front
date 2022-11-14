@@ -36,6 +36,8 @@
     }
 
     &_success {
+        opacity: 0.3;
+        pointer-events: none;
         &:before {
             background: linear-gradient(142.25deg, #2FEF57 20.57%, #2BBA4C 48.47%, #20948C 78.79%);;
         }

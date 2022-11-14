@@ -4,25 +4,15 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/dist/query/react';
 export const subscriptionApi = createApi({
     reducerPath: 'subscriptionApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://jsonplaceholder.typicode.com/'
+        baseUrl: 'http://127.0.0.1:5000/api/v1/'
     }),
     endpoints: (builder) => ({
-        subscribeByEmail: builder.mutation<unknown, {email: string}>({
+        subscribeByEmail: builder.mutation<{id: number, email: string}, {email: string}>({
             query: (data) => ({
-				url: '/posts',
+				url: '/users',
 				method: 'POST',
 				body: data,
 			}),
-			// async onQueryStarted(data, { dispatch, queryFulfilled }) {
-			// 	try {
-			// 		const { data } = await queryFulfilled;
-			// 		// `onSuccess` side-effect
-			// 		data && dispatch(authApi.endpoints.getUserInfo.initiate(undefined, { forceRefetch: true }));
-			// 	} catch (err) {
-			// 		// `onError` side-effect
-			// 		throw 'Error fetching first user data!';
-			// 	}
-			// },
         })
     })
  })

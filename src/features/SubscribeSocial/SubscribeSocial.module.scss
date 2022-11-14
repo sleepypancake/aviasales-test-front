@@ -5,6 +5,15 @@
         display: flex;
         gap: 20px;
         margin-bottom: 28px;
+        position: relative;
+    }
+
+    &__msg {
+        color: #FC1E1F;
+        font-size: 0.9rem;
+        line-height: 1.3;
+        position: absolute;
+        bottom: -16px;
     }
 
     &__network {
