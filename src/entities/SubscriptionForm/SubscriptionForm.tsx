@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './SubscriptionForm.module.scss'
 import cn from 'classnames'
 import { SubscribeEmail, SubscribeSocial } from '../../features'
@@ -23,7 +23,7 @@ export const SubscriptionForm = ({opt}: SubscriptionFormProps) => {
     const successSocial = useAppSelector(selectCurrentSuccessSocial);
     const availableEmail = useAppSelector(selectCurrentAvailableEmail);
     const availableSocial = useAppSelector(selectCurrentAvailableSocial);
-    
+
     return (
         <div className={cn(
             styles.subscriptionForm, 
